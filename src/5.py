@@ -6,7 +6,6 @@ assert problem5(10) == 2520
 
 def problem5(input):
 	factors = collectFactors(input)
-	print factors
 	answer = product(factors)
 	print str(answer)
 
