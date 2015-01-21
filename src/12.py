@@ -1,36 +1,22 @@
-import sys
-
-checkSize = 4
-
-raw = sys.stdin.readlines()
-graph = []
-for line in raw:
-	graph.append(line.strip('\n').split(' '))
+def triangle(i):
+    return i*(i+1)/2
 
 
+def countFactors(i):
+    factors = 1
+    for x in xrange(1, (i/2)+1):
+        if (i % x == 0):
+            factors += 1
+    return factors
 
-def horizmax():
-	max = 0
-	for row in graph:
-		for i in xrange(len(row) - checkSize):
-			x = 0
-			product = 1
-			while x < checkSize:
-				product = product * long(row[i+x])
-				print product
-				x = x+1
-			if product > max:
-				max = product
-	return max
+def divisorBound(i):
+    d=0
+    ans=0
+    while (d<i):
+        ans += 1
+        d = countFactors(ans)
+    return ans
 
-def vertmax():
-	max = 0
-	for j in xrange(len(graph) - checkSize):
-		i = 0
-		for column in graph[j]:
-			y = 0
-			product = 1
-			while y < checkSize:
-				product = product * long(graph[j+y][i])
-			
-
+if (__name__ == "__main__"):
+    print divisorBound(10)
+    print divisorBound(500)
